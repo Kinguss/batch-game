@@ -75,7 +75,7 @@ if errorlevel 1 (
     echo You have successfully entered the secret hideout.
     timeout 4
     pause
-    goto hideout
+    goto hideout 
 )
 
 rem Making the hideout label
@@ -132,7 +132,7 @@ if %score%==3 (
     echo Amazing! You have unlocked the safe combination: 4241
     timeout 5
     pause
-    goto safe
+    goto walking2
 ) else (
     echo You did not get all questions correct. You cannot access the lab. Game Over!
     timeout 5
@@ -164,11 +164,66 @@ goto fight
 rem Making the fight label
 :fight
 cls 
+set /a chance = %random% %% 100
+set /a chance2 = %random% %% 100
 echo You see 3 mutated zombies approaching you!
 timeout 4
 echo You have 2 choices: fight them with your bare hands or use the knife you found earlier.
 timeout 5
-echo 1 = bare hands
-echo 2 = knife
+echo 1 = knife
+echo 2 = bare hands
 choice /C 12
-if errorlevel 2 ()
+if errorlevel 2 (
+    cls
+    echo You chose to fight with your bare hands.
+    timeout 3
+    echo There is a 70% chance of getting infected by the zombies.
+    if %chance% LSS 70 (
+        echo You got infected. Game over.
+        timeout 3
+        pause 
+        goto GameIntro
+    )
+    else (
+        echo You somehow survived!
+        timeout 3
+        pause 
+        goto safe
+    )
+)
+if errorlevel 1 (
+    cls
+    echo You chose to use the knife. 
+    timeout 4
+    echo There is a 30% percent chance of getting infected.
+    if %chance2% LSS 30 (
+        echo You got infected. Game over.
+        timeout 3
+        pause 
+        goto GameIntro
+    )
+    else (
+        echo You somehow survived.
+        timeout 3
+        pause 
+        goto safe 
+    )
+)
+
+rem making the safe label
+:safe 
+cls 
+echo You approach the safe. Your hands are trembling as you enter the combination 4241.
+timeout 5
+echo The safe opens, revealing a vial of the cure!
+timeout 4
+echo You take the cure and inject yourself with it.
+timeout 4
+echo Now the cure is in your system, your blood contains antibodies that can fight the zombie virus!
+timeout 5
+echo Now you go to the WHO and help them make a vaccine for the whole world.
+timeout 5
+echo Congratulations! You have completed the game!
+timeout 5
+pause 
+exit 
