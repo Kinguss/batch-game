@@ -3,6 +3,7 @@ color 0B
 cls
 
 rem Making the intro label
+cls
 :GameIntro 
 echo Its the year 2029 and a zombie apocalypse has taken over the world, your goal is to get to the WHO secret lab and find the cure.
 timeout 12
@@ -20,6 +21,7 @@ echo This is an encrypted telephone, enter the correct combination to find the l
 echo Here is a hint! The number was mentioned in the intro.
 pause
 set loopCount=3
+set code=0000
 set /a triesleft=%loopCount%
 :loop
 cls
@@ -28,7 +30,7 @@ if "%code%"=="8081" (
     echo Access granted! The secret hideout is located at 41 mango street.
     timeout 5
     pause
-    goto quest2
+    goto walking
 )
 set /a triesleft-=1
 if %triesleft%==0 (
@@ -47,7 +49,7 @@ echo You are walking towards the secret hideout when you hear a noise behind you
 timeout 4
 echo It was just a cat, you continue walking.
 timeout 3
-
+goto quest2
 
 rem Making the quest2 label + choice 
 :quest2
@@ -96,7 +98,7 @@ rem Making the math problems label
 :mathquiz
 cls 
 set /a score=0
-echo First question: What is √256?
+echo First question: What is the square root of 256?
 set /p answer1="enter number: "
 if "%answer1%"=="16" (
     echo Correct!
@@ -183,8 +185,7 @@ if errorlevel 2 (
         timeout 3
         pause 
         goto GameIntro
-    )
-    else (
+   ) else (
         echo You somehow survived!
         timeout 3
         pause 
@@ -201,8 +202,7 @@ if errorlevel 1 (
         timeout 3
         pause 
         goto GameIntro
-    )
-    else (
+   ) else (
         echo You somehow survived.
         timeout 3
         pause 
