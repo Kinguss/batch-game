@@ -3,8 +3,8 @@ color 0B
 cls
 
 rem Making the intro label
-cls
 :GameIntro 
+cls
 echo Its the year 2029 and a zombie apocalypse has taken over the world, your goal is to get to the WHO secret lab and find the cure.
 timeout 12
 cls
@@ -118,7 +118,7 @@ if "%answer2%"=="31" (
 )
 timeout 3
 cls
-echo Third and final question: What is 15% of 400?
+echo Third and final question: What is 15 percent of 400?
 set /p answer3="enter number: "
 if "%answer3%"=="60" (
     echo Correct!
@@ -145,7 +145,7 @@ if %score%==3 (
 rem Making another walking label
 :walking2
 cls
-echo You walk deeper into the hideout towards the lab.
+echo You walk out of the hideout towards the lab.
 timeout 4
 echo You can see zombies about 200 feet ahead of you, but it doesn't bother you because they are eating dead corpses.
 timeout 6
@@ -155,7 +155,7 @@ echo You open it because the lock was busted.
 timeout 3
 echo You enter the lab and walk towards the safe with the cure.
 timeout 5
-echo You thought that you have won, but a a few zombies are aroung the safe!
+echo You thought that you have won, but a a few zombies are around the safe!
 timeout 5
 echo They aren't normal zombies, they are mutated zombies that are faster, stronger and smarter!
 timeout 5
@@ -226,4 +226,5 @@ timeout 5
 echo Congratulations! You have completed the game!
 timeout 5
 pause 
+
 exit 
